@@ -14,13 +14,13 @@ const pool = new Pool({
 // var pg = require('pg').native;
 // var connectionString = 'postgres://<userid>:password@depot:5432/<userid>_nodejs';
 
-app.get('/', function (req, res) { 
-	res.send('Hello World!');
-});
+// app.get('/', function (req, res) { 
+// 	res.send('Hello World!');
+// });
 
-app.listen(port, function () {
-	console.log('Example app listening on port 8080!');
-});
+// app.listen(port, function () {
+// 	console.log('Example app listening on Heroku Server');
+// });
 
 // // app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use (express.static(path.join(__dirname + '/front-end')));
@@ -126,7 +126,7 @@ app.put('/update', async (req, res) => {
 });
 
 app.get('/', (req, res) => res.render('pages/index'))
-	.listen(port, () => console.log('Listening on ${ port }'))
+	.listen(port, () => console.log('Listening on Heroku Server'))
 
 // app.put('/put', async (req, res) => { 
 // 	try {
