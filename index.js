@@ -61,7 +61,7 @@ app.get('/get', async (req, res) => {
 	} 
 });
 
-app.get('/', (req, res) => res.render('pages/index')).listen(PORT, () => console.log('Listening on ${ PORT }'))
+//app.get('/', (req, res) => res.render('pages/index')).listen(PORT, () => console.log('Listening on ${ PORT }'))
 
 app.post('/post', async (req, res) => { 
 	try {
