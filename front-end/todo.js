@@ -12,22 +12,43 @@ $(document).ready(function(e) {
 			"Add task" : function () { 
 				var taskName = $('#task').val();
 				var user1 = $('#user1').val();
+				$('#task').val("");
+				$('#user1').val("");
 				if (taskName === "") { return false; }
 				count++;
+
+				$.Ajax({
+						method: 'POST',
+						url: 'http://localhost:8080/post/', 
+						data: JSON.stringify({
+
+							task: taskName
+							task_name : user1
+
+						}),
+						classontentType: "application/json",
+						dataType: "json" 
+					}).then(my_next_function, ERROR_LOG);
+
 				var taskHTML = '<li><span class="done">%</span>';
 				taskHTML += '<span class="edit">+</span>';
 				taskHTML += '<span class="delete">x</span>';
-				taskHTML += '<span class="task"></span></li>';
+				taskHTML += '<span class="count"></span>';
+				taskHTML += '<span class="tasks"></span>';
+				taskHTML += '<span class="users"></span></li>';
 
 				var $newTask = $(taskHTML);
 
-				$newTask.find('.task').text(count+'		'+taskName+'	'+user1);
+				$newTask.find('.count').text(count+' ');
+				$newTask.find('.tasks').text(taskName+' ');
+				$newTask.find('.users').text(user1);
 				$newTask.hide();
 				$('#todo-list').prepend($newTask);
 				
 				$newTask.show('clip',250).effect('highlight',1000);
 				$(this).dialog('close');
-				$('#task').val("");
+				
+				
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
 		}
@@ -45,14 +66,29 @@ $(document).ready(function(e) {
 			"Confirm" : function(){
 				var name = $('#name').val();
 				var user = $('#user').val();
-				//alter($('#name').val());
-				if (name === "") { return false; }
-				var x = $select.find('.task').text();
-				$select.find('.task').text(x.charAt(0)+'	'+name+'		'+user);
-
-				$(this).dialog('close');
 				$('#name').val("");
 				$('#user').val("");
+				//alter($('#name').val());
+				if (name === "") { return false; }
+
+				$.Ajax({
+						method: 'PUT',
+						url: 'http://localhost:8080/put/', 
+						data: JSON.stringify({
+							previous_index: $select.find('.count').text();
+							new_taskName: name
+							new_taskUser: user
+						}),
+						classontentType: "application/json",
+						dataType: "json" 
+					}).then(my_next_function, ERROR_LOG);
+
+				var x = $select.find('.task').text();
+				$select.find('.tasks').text(name+' ');
+				$select.find('.users').text(user);
+
+				$(this).dialog('close');
+				
 
 			},
 			"Cancel" : function(){
@@ -65,6 +101,16 @@ $(document).ready(function(e) {
 		modal : true, autoOpen: false,
 		buttons : {
 			"Confirm" : function(){
+				$.Ajax({
+						method: 'DELETE',
+						url: 'http://localhost:8080/delete/', 
+						data: JSON.stringify({
+							task: $select.find('.task').text() 
+						}),
+						classontentType: "application/json",
+						dataType: "json" 
+					}).then(my_next_function, ERROR_LOG);
+
 				$select.effect('puff', function() { $(this).remove(); });
 				$(this).dialog('close');
 
@@ -77,9 +123,20 @@ $(document).ready(function(e) {
 
 	$('#todo-list').on('click', '.done', function() {
 		var $taskItem = $(this).parent('li');
+		$.Ajax({
+			method: 'PUT',
+			url: 'http://localhost:8080/put/', 
+			data: JSON.stringify({
+				task: task.find('.task').test() 
+			}),
+			classontentType: "application/json",
+			dataType: "json" 
+		}).then(my_next_function, ERROR_LOG);
+
 		$taskItem.slideUp(250, function() {
 			var $this = $(this);
 			$this.detach();
+
 			$('#completed-list').prepend($this);
 			$this.slideDown();
 		});
@@ -97,6 +154,7 @@ $(document).ready(function(e) {
 		cursor : 'pointer',
 		placeholder : 'ui-state-highlight',
 		cancel : '.delete,.done'
+
 	});
 
 	$('.sortlist').on('click','.delete',function() {
