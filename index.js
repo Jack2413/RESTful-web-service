@@ -10,6 +10,7 @@ const pool = new Pool({
 	ssl: true 
 });
 
+
 // var pg = require('pg').native;
 // var connectionString = 'postgres://<userid>:password@depot:5432/<userid>_nodejs';
 
@@ -21,12 +22,8 @@ app.listen(port, function () {
 	console.log('Example app listening on port 8080!');
 });
 
-
-
-
-
 // // app.listen(port, () => console.log(`Listening on port ${port}`));
-
+app.use (express.static(path.join(__dirname + '/front-end')));
 //invoke functions on a service hosted in a different location
 // Add headers
 app.use(function (req, res, next) {
@@ -63,8 +60,6 @@ app.get('/get', async (req, res) => {
 		res.send("Error " + err);
 	} 
 });
-
-//app.get('/', (req, res) => res.render('pages/index')).listen(PORT, () => console.log('Listening on ${ PORT }'))
 
 app.post('/post', async (req, res) => { 
 	try {
@@ -129,6 +124,9 @@ app.put('/update', async (req, res) => {
 		res.send("Error " + err);
 	} 
 });
+
+app.get('/', (req, res) => res.render('pages/index'))
+	.listen(PORT, () => console.log('Listening on ${ PORT }'))
 
 // app.put('/put', async (req, res) => { 
 // 	try {
