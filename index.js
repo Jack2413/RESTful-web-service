@@ -2,13 +2,16 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var port = process.env.PORT || 8080;
-const path = require('path')
-const { Pool } = require('pg'); const pool = new Pool({
-connectionString: process.env.DATABASE_URL,
-ssl: true });
 
-var pg = require('pg').native;
-var connectionString = 'postgres://<userid>:password@depot:5432/<userid>_nodejs';
+const path = require('path')
+const { Pool } = require('pg'); 
+const pool = new Pool({
+	connectionString: process.env.DATABASE_URL,
+	ssl: true 
+});
+
+// var pg = require('pg').native;
+// var connectionString = 'postgres://<userid>:password@depot:5432/<userid>_nodejs';
 
 app.get('/', function (req, res) { 
 	res.send('Hello World!');
