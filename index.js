@@ -126,7 +126,7 @@ app.put('/update', async (req, res) => {
 });
 
 app.get('/', (req, res) => res.render('pages/index'))
-	.listen(PORT, () => console.log('Listening on ${ PORT }'))
+	.listen(port, () => console.log('Listening on ${ port }'))
 
 // app.put('/put', async (req, res) => { 
 // 	try {
