@@ -26,7 +26,7 @@ $(document).ready(function(e) {
 
 							task: taskName,
 							task_name : user1,
-							state : todo
+							state : 'todo'
 
 						}),
 						classontentType: "application/json",
@@ -113,7 +113,7 @@ $(document).ready(function(e) {
 			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
 				task: task.find('.task').test(),
-				state: completed 
+				state: 'completed' 
 			}),
 			classontentType: "application/json",
 			dataType: "json" 
@@ -169,7 +169,7 @@ $(document).ready(function(e) {
 			taskHTML += '<span class="users"></span></li>';
 
 			var $newTask = $(taskHTML);
-
+			alter(tasks[i].id);
 			$newTask.find('.count').text(tasks[i].id+' ');
 			$newTask.find('.tasks').text(tasks[i].task+' ');
 			$newTask.find('.users').text(tasks[i].name);
