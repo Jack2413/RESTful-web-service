@@ -158,8 +158,9 @@ $(document).ready(function(e) {
 	}
 
 	function reloadTasks(tasks){
-		console.log(tasks);
-		tasks.forEach(task=>{
+		//console.log(tasks);
+		var i = 0;
+		for (i; i<tasks.length; i++) {
 			var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
@@ -169,17 +170,17 @@ $(document).ready(function(e) {
 
 			var $newTask = $(taskHTML);
 
-			$newTask.find('.count').text(task.id+' ');
-			$newTask.find('.tasks').text(task.task+' ');
-			$newTask.find('.users').text(user.name);
+			$newTask.find('.count').text(tasks[i].id+' ');
+			$newTask.find('.tasks').text(tasks[i].task+' ');
+			$newTask.find('.users').text(tasks[i].name);
 			$newTask.hide();
 			
-			if (tasks.state == 'todo') {
+			if (tasks[i].state == 'todo') {
 				$('#todo-list').prepend($newTask);
 			}else{
 				$('#completed-list').prepend($newTask);
 			}
-		});
+		}
 	}
 
 }); // end ready
