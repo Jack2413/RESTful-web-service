@@ -18,7 +18,7 @@ $(document).ready(function(e) {
 				if (taskName === "") { return false; }
 				count++;
 
-				$.Ajax({
+				$.ajax({
 						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post', 
 						data: JSON.stringify({
@@ -54,7 +54,7 @@ $(document).ready(function(e) {
 				//alter($('#name').val());
 				if (name === "") { return false; }
 
-				$.Ajax({
+				$.ajax({
 						method: 'PUT',
 						url: 'https://nwen304project2.herokuapp.com/put', 
 						data: JSON.stringify({
@@ -85,7 +85,7 @@ $(document).ready(function(e) {
 		modal : true, autoOpen: false,
 		buttons : {
 			"Confirm" : function(){
-				$.Ajax({
+				$.ajax({
 						method: 'DELETE',
 						url: 'https://nwen304project2.herokuapp.com/delete', 
 						data: JSON.stringify({
@@ -107,7 +107,7 @@ $(document).ready(function(e) {
 
 	$('#todo-list').on('click', '.done', function() {
 		var $taskItem = $(this).parent('li');
-		$.Ajax({
+		$.ajax({
 			method: 'PUT',
 			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
@@ -148,12 +148,12 @@ $(document).ready(function(e) {
 
 	});
 
-	function reload() {
-	$.Ajax({
-		method: 'GET',
-		url: 'https://nwen304project2.herokuapp.com/get', 
-			
-	}).then(reloadTasks, ERROR_LOG);
+	function reload () {
+		$.ajax ({
+			method: 'GET',
+			url: 'https://nwen304project2.herokuapp.com/get', 
+				
+		}).then(reloadTasks, ERROR_LOG);
 	}
 
 	function reloadTasks(tasks){
@@ -179,4 +179,5 @@ $(document).ready(function(e) {
 			}
 		})
 	}
+
 }); // end ready
