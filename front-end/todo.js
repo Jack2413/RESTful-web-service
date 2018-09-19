@@ -148,40 +148,41 @@ $(document).ready(function(e) {
 		$("#confirm-dialog").dialog('open');
 
 	});
+});
 
-	function reload () {
-		$.ajax ({
-			method: 'GET',
-			url: 'https://nwen304project2.herokuapp.com/get', 
+function reload () {
+	$.ajax ({
+		method: 'GET',
+		url: 'https://nwen304project2.herokuapp.com/get', 
 				
-		}).then (reloadTasks, ERROR_LOG);
-	}
+	}).then (reloadTasks, ERROR_LOG);
+}
 
-	function reloadTasks(tasks){
-		alert(tasks[0].id);
-		var i = 0;
+function reloadTasks(tasks){
+	alert(tasks[0].id);
+	var i = 0;
 		//alert(tasks);
-		for (i; i<tasks.length; i++) {
-			var taskHTML = '<li><span class="done">%</span>';
+	for (i; i<tasks.length; i++) {
+		var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
 			taskHTML += '<span class="count"></span>';
 			taskHTML += '<span class="tasks"></span>';
 			taskHTML += '<span class="users"></span></li>';
 
-			var $newTask = $(taskHTML);
+		var $newTask = $(taskHTML);
 
 			$newTask.find('.count').text(tasks[i].id+' ');
 			$newTask.find('.tasks').text(tasks[i].task+' ');
 			$newTask.find('.users').text(tasks[i].name);
 			$newTask.hide();
 			
-			if (tasks[i].state == 'todo') {
-				$('#todo-list').prepend($newTask);
-			}else{
-				$('#completed-list').prepend($newTask);
-			}
+		if (tasks[i].state == 'todo') {
+			$('#todo-list').prepend($newTask);
+		}else{
+			$('#completed-list').prepend($newTask);
 		}
 	}
+}
 
-}); // end ready
+ // end ready
