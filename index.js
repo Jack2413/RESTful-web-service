@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var port = process.env.PORT || 8080;
-var DATABASE_URL = 'postgres://wewcmmzrcaubfs:13a35e258a45f4671a295a69570853853d2c4b364a8d66405a26bde1170b2fdf@ec2-54-83-4-76.compute-1.amazonaws.com:5432/d303lm4ceipfkg'
-const path = require('path')
+var DATABASE_URL = 'postgres://wewcmmzrcaubfs:13a35e258a45f4671a295a69570853853d2c4b364a8d66405a26bde1170b2fdf@ec2-54-83-4-76.compute-1.amazonaws.com:5432/d303lm4ceipfkg';
+const path = require('path');
 const { Pool } = require('pg'); 
 const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
