@@ -39,9 +39,9 @@ next();
 
 //rest api functions
 
-app.use(express.static(path.join(__dirname, 'public')))
-	.set('views', path.join(__dirname, 'views')) 
-	.set('view engine', 'ejs')
+// app.use(express.static(path.join(__dirname, 'public')))
+// 	.set('views', path.join(__dirname, 'views')) 
+// 	.set('view engine', 'ejs')
 
 app.get('/get', async (req, res) => { 
 	try {
@@ -67,7 +67,8 @@ app.post('/post', async (req, res) => {
 		var id = req.body.task_id;
 		var task = req.body.task;
 		var name = req.body.taks_name;
-		var result = await client.query("INSERT INTO todo (TASK,NAME) VALUES ($1,$2)",[task,task_name]);
+		var state = req.body.state;
+		var result = await client.query("INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)",[task,task_name,state]);
 		if (!result) {
 			return res.send('No data found'); 
 		}else{ 

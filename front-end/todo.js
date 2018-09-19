@@ -22,13 +22,14 @@ $(document).ready(function(e) {
 						url: 'http://localhost:8080/post/', 
 						data: JSON.stringify({
 
-							task: taskName
-							task_name : user1
+							task: taskName,
+							task_name : user1,
+							state : todo
 
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(my_next_function, ERROR_LOG);
+					}).then(createToDo, ERROR_LOG);
 
 				var taskHTML = '<li><span class="done">%</span>';
 				taskHTML += '<span class="edit">+</span>';
@@ -75,8 +76,9 @@ $(document).ready(function(e) {
 						method: 'PUT',
 						url: 'http://localhost:8080/put/', 
 						data: JSON.stringify({
-							previous_index: $select.find('.count').text();
-							new_taskName: name
+
+							previous_index: $select.find('.count').text(),
+							new_taskName: name,
 							new_taskUser: user
 						}),
 						classontentType: "application/json",
@@ -127,7 +129,8 @@ $(document).ready(function(e) {
 			method: 'PUT',
 			url: 'http://localhost:8080/put/', 
 			data: JSON.stringify({
-				task: task.find('.task').test() 
+				task: task.find('.task').test(),
+				state: completed 
 			}),
 			classontentType: "application/json",
 			dataType: "json" 
@@ -153,7 +156,7 @@ $(document).ready(function(e) {
 		connectWith : '.sortlist',
 		cursor : 'pointer',
 		placeholder : 'ui-state-highlight',
-		cancel : '.delete,.done'
+		cancel : '.delete,.done',
 
 	});
 
@@ -162,5 +165,17 @@ $(document).ready(function(e) {
 		$("#confirm-dialog").dialog('open');
 
 	});
+
+	function createToDo(task) {
+	$.Ajax({
+			method: 'GET',
+			url: 'http://localhost:8080/put/', 
+			data: JSON.stringify({
+				task: task.find('.task').test() 
+			}),
+			classontentType: "application/json",
+			dataType: "json" 
+		}).then(my_next_function, ERROR_LOG);
+	}
 
 }); // end ready
