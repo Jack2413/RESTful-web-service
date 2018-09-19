@@ -50,13 +50,13 @@ app.get('/get', async (req, res) => {
 		if (!result) {
 			return res.send('No data found'); 
 		}else{ 
-			return res.send(result.rows);
-			//response.json(result.rows);
+			//return res.send(result.rows);
+			return reresponse.json(result.rows);
 			//result.rows.forEach(row=>{ console.log(row);
 			//});
 		}
 	//res.render('front-end/', {'tasks': result.rows});
-	client.release();
+	//client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
