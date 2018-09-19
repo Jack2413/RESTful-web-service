@@ -51,9 +51,9 @@ app.get('/get', async (req, res) => {
 			return res.send('No data found'); 
 		}else{ 
 			result.rows.forEach(row=>{ console.log(row);
-		});
-	}
-	res.render('pages/db', {'data': result.rows});
+			});
+		}
+	res.render('/front-end', {'tasks': result.rows});
 	client.release();
 	} catch (err) { 
 		console.error(err); 

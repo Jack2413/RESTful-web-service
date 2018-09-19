@@ -158,7 +158,8 @@ $(document).ready(function(e) {
 	}
 
 	function reloadTasks(tasks){
-		tasks.forEach(function(task){
+		console.log(tasks);
+		tasks.forEach(task=>{
 			var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
@@ -178,7 +179,7 @@ $(document).ready(function(e) {
 			}else{
 				$('#completed-list').prepend($newTask);
 			}
-		})
+		});
 	}
 
 }); // end ready
