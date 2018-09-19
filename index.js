@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/db', async (req, res) => {
   try {
     const client = await pool.connect()
-    var result = await client.query('SELECT * FROM test_table');   
+    var result = await client.query('SELECT * FROM todo');   
    
     if (!result) {
       return res.send('No data found');
