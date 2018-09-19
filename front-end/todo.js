@@ -1,6 +1,7 @@
 $(document).ready(function(e) {
 	var $select;
 	var count = 0;
+	reload();
 	$('#add-todo').button({
 		icons: { primary: "ui-icon-circle-plus" }}).click(
 		function() {
@@ -29,27 +30,8 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(createToDo, ERROR_LOG);
-
-				var taskHTML = '<li><span class="done">%</span>';
-				taskHTML += '<span class="edit">+</span>';
-				taskHTML += '<span class="delete">x</span>';
-				taskHTML += '<span class="count"></span>';
-				taskHTML += '<span class="tasks"></span>';
-				taskHTML += '<span class="users"></span></li>';
-
-				var $newTask = $(taskHTML);
-
-				$newTask.find('.count').text(count+' ');
-				$newTask.find('.tasks').text(taskName+' ');
-				$newTask.find('.users').text(user1);
-				$newTask.hide();
-				$('#todo-list').prepend($newTask);
-				
-				$newTask.show('clip',250).effect('highlight',1000);
-				$(this).dialog('close');
-				
-				
+					}).then(createToDo, ERROR_LOG);	
+					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
 		}
@@ -166,16 +148,35 @@ $(document).ready(function(e) {
 
 	});
 
-	function createToDo(task) {
+	function reload() {
 	$.Ajax({
-			method: 'GET',
-			url: 'http://localhost:8080/put/', 
-			data: JSON.stringify({
-				task: task.find('.task').test() 
-			}),
-			classontentType: "application/json",
-			dataType: "json" 
-		}).then(my_next_function, ERROR_LOG);
+		method: 'GET',
+		url: 'http://localhost:8080/put/', 
+			
+	}).then(reloadTasks, ERROR_LOG);
 	}
 
+	function reloadTasks(tasks){
+		tasks.forEach(function(tasks){
+			var taskHTML = '<li><span class="done">%</span>';
+			taskHTML += '<span class="edit">+</span>';
+			taskHTML += '<span class="delete">x</span>';
+			taskHTML += '<span class="count"></span>';
+			taskHTML += '<span class="tasks"></span>';
+			taskHTML += '<span class="users"></span></li>';
+
+			var $newTask = $(taskHTML);
+
+			$newTask.find('.count').text(id+' ');
+			$newTask.find('.tasks').text(taskName+' ');
+			$newTask.find('.users').text(user);
+			$newTask.hide();
+			
+			if (tasks.state == 'todo') {
+				$('#todo-list').prepend($newTask);
+			}else{
+				$('#completed-list').prepend($newTask);
+			}
+		}
+	}
 }); // end ready
