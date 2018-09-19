@@ -30,7 +30,7 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(createToDo, ERROR_LOG);	
+					})
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
@@ -65,9 +65,9 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(my_next_function, ERROR_LOG);
+					}).then(reload, ERROR_LOG);
 
-				var x = $select.find('.task').text();
+				//var x = $select.find('.task').text();
 				$select.find('.tasks').text(name+' ');
 				$select.find('.users').text(user);
 
@@ -93,7 +93,7 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(my_next_function, ERROR_LOG);
+					}).then(reload, ERROR_LOG);
 
 				$select.effect('puff', function() { $(this).remove(); });
 				$(this).dialog('close');
@@ -177,6 +177,6 @@ $(document).ready(function(e) {
 			}else{
 				$('#completed-list').prepend($newTask);
 			}
-		}
+		})
 	}
 }); // end ready
