@@ -53,7 +53,7 @@ app.get('/get', async (req, res) => {
 			result.rows.forEach(row=>{ console.log(row);
 			});
 		}
-	res.render('index', {'tasks': result.rows});
+	res.render('/', {'tasks': result.rows});
 	client.release();
 	} catch (err) { 
 		console.error(err); 
