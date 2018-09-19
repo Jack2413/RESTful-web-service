@@ -1,6 +1,7 @@
 $(document).ready(function(e) {
 	var $select;
 	var count = 0;
+	var ERROR_LOG = console.error.bind(console);
 	reload();
 	$('#add-todo').button({
 		icons: { primary: "ui-icon-circle-plus" }}).click(
@@ -153,7 +154,7 @@ $(document).ready(function(e) {
 			method: 'GET',
 			url: 'https://nwen304project2.herokuapp.com/get', 
 				
-		}).then(reloadTasks, ERROR_LOG);
+		}).then (reloadTasks, ERROR_LOG);
 	}
 
 	function reloadTasks(tasks){
