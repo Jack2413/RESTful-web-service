@@ -158,9 +158,9 @@ $(document).ready(function(e) {
 	}
 
 	function reloadTasks(tasks){
-		//console.log(tasks);
+		alert(tasks.[0].id);
 		var i = 0;
-		alert(tasks);
+		//alert(tasks);
 		for (i; i<tasks.length; i++) {
 			var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
