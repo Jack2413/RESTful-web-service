@@ -39,9 +39,9 @@ next();
 
 //rest api functions
 
-app.use(express.static(path.join(__dirname, 'public')))
-	.set('views', path.join(__dirname, 'views')) 
-	.set('view engine', 'ejs')
+// app.use(express.static(path.join(__dirname, 'public')))
+// 	.set('views', path.join(__dirname, 'views')) 
+// 	.set('view engine', 'ejs')
 
 app.get('/get', async (req, res) => { 
 	try {
@@ -53,7 +53,7 @@ app.get('/get', async (req, res) => {
 			result.rows.forEach(row=>{ console.log(row);
 			});
 		}
-	res.render('/front-end', {'tasks': result.rows});
+	res.render('front-end', {'tasks': result.rows});
 	client.release();
 	} catch (err) { 
 		console.error(err); 
