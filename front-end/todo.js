@@ -169,7 +169,7 @@ $(document).ready(function(e) {
 			taskHTML += '<span class="users"></span></li>';
 
 			var $newTask = $(taskHTML);
-			alert(tasks[i].id);
+			alert(tasks.length);
 			$newTask.find('.count').text(tasks[i].id+' ');
 			$newTask.find('.tasks').text(tasks[i].task+' ');
 			$newTask.find('.users').text(tasks[i].name);

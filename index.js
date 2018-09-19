@@ -50,7 +50,7 @@ app.get('/get', async (req, res) => {
 		if (!result) {
 			return res.send('No data found'); 
 		}else{ 
-			result.rows.forEach(row=>{ console.log(row);
+			result.rows.forEach(row=>{ alert(row);
 			});
 		}
 	res.render('front-end', {'tasks': result.rows});
