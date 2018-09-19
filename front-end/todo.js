@@ -158,7 +158,7 @@ $(document).ready(function(e) {
 	}
 
 	function reloadTasks(tasks){
-		alert(tasks.[0].id);
+		alert(tasks[0].id);
 		var i = 0;
 		//alert(tasks);
 		for (i; i<tasks.length; i++) {
