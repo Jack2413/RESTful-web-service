@@ -158,7 +158,7 @@ $(document).ready(function(e) {
 	}
 
 	function reloadTasks(tasks){
-		tasks.forEach(function(tasks){
+		tasks.forEach(function(task){
 			var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
@@ -168,9 +168,9 @@ $(document).ready(function(e) {
 
 			var $newTask = $(taskHTML);
 
-			$newTask.find('.count').text(id+' ');
-			$newTask.find('.tasks').text(taskName+' ');
-			$newTask.find('.users').text(user);
+			$newTask.find('.count').text(task.id+' ');
+			$newTask.find('.tasks').text(task.task+' ');
+			$newTask.find('.users').text(user.name);
 			$newTask.hide();
 			
 			if (tasks.state == 'todo') {
