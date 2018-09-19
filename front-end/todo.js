@@ -160,6 +160,7 @@ $(document).ready(function(e) {
 	function reloadTasks(tasks){
 		//console.log(tasks);
 		var i = 0;
+		alert(tasks);
 		for (i; i<tasks.length; i++) {
 			var taskHTML = '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
@@ -169,7 +170,7 @@ $(document).ready(function(e) {
 			taskHTML += '<span class="users"></span></li>';
 
 			var $newTask = $(taskHTML);
-			alert(tasks.length);
+
 			$newTask.find('.count').text(tasks[i].id+' ');
 			$newTask.find('.tasks').text(tasks[i].task+' ');
 			$newTask.find('.users').text(tasks[i].name);
