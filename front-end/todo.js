@@ -20,7 +20,7 @@ $(document).ready(function(e) {
 
 				$.Ajax({
 						method: 'POST',
-						url: 'http://localhost:8080/post/', 
+						url: 'https://nwen304project2.herokuapp.com/post', 
 						data: JSON.stringify({
 
 							task: taskName,
@@ -56,7 +56,7 @@ $(document).ready(function(e) {
 
 				$.Ajax({
 						method: 'PUT',
-						url: 'http://localhost:8080/put/', 
+						url: 'https://nwen304project2.herokuapp.com/put', 
 						data: JSON.stringify({
 
 							previous_index: $select.find('.count').text(),
@@ -87,7 +87,7 @@ $(document).ready(function(e) {
 			"Confirm" : function(){
 				$.Ajax({
 						method: 'DELETE',
-						url: 'http://localhost:8080/delete/', 
+						url: 'https://nwen304project2.herokuapp.com/delete', 
 						data: JSON.stringify({
 							task: $select.find('.task').text() 
 						}),
@@ -109,7 +109,7 @@ $(document).ready(function(e) {
 		var $taskItem = $(this).parent('li');
 		$.Ajax({
 			method: 'PUT',
-			url: 'http://localhost:8080/put/', 
+			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
 				task: task.find('.task').test(),
 				state: completed 
@@ -151,7 +151,7 @@ $(document).ready(function(e) {
 	function reload() {
 	$.Ajax({
 		method: 'GET',
-		url: 'http://localhost:8080/put/', 
+		url: 'https://nwen304project2.herokuapp.com/get', 
 			
 	}).then(reloadTasks, ERROR_LOG);
 	}
