@@ -31,7 +31,7 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					})
+					}).then(reload, ERROR_LOG);
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
@@ -112,12 +112,12 @@ $(document).ready(function(e) {
 			method: 'PUT',
 			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
-				task: task.find('.task').test(),
+				task: $select.find('.task').test(),
 				state: 'completed' 
 			}),
 			classontentType: "application/json",
 			dataType: "json" 
-		}).then(my_next_function, ERROR_LOG);
+		}).then(reload, ERROR_LOG);
 
 		$taskItem.slideUp(250, function() {
 			var $this = $(this);
