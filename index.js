@@ -152,8 +152,8 @@ app.put('/put', async (req, res) => {
 			result.rows.forEach(row=>{ console.log(row);
 		});
 	}
-	res.render('pages/db', {'data': result.rows});
-	client.release();
+	//res.render('pages/db', {'data': result.rows});
+	//client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
