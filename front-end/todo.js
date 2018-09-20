@@ -21,11 +21,9 @@ $(document).ready(function(e) {
 						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post',
 						data: JSON.stringify({
-
 							task: taskName,
 							task_name: user1,
 							state: 'todo'
-
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
