@@ -159,11 +159,11 @@ function reload () {
 }
 
 function reloadTasks(tasks){
-	alert(tasks[0].id);
+	alert(tasks[0].state);
 	var i = 0;
 		//alert(tasks);
 	for (i; i<tasks.length; i++) {
-		var taskHTML = '<li><span class="done">%</span>';
+		var taskHTML =  '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
 			taskHTML += '<span class="count"></span>';
@@ -178,6 +178,7 @@ function reloadTasks(tasks){
 			$newTask.hide();
 			
 		if (tasks[i].state == 'todo') {
+			alert("in if statement");
 			$('#todo-list').prepend($newTask);
 		}else{
 			$('#completed-list').prepend($newTask);
