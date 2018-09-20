@@ -26,7 +26,7 @@ $(document).ready(function(e) {
 							task_name: user1,
 							state: 'todo'
 
-						})
+						}),
 						classontentType: "application/json",
 						dataType: "json" 
 					}).then(reloadTasks, ERROR_LOG);
