@@ -96,16 +96,16 @@ app.post('/post', async (req, res) => {
 
 app.delete('/delete', async (req, res) => { 
 	try {
-
 		const client = await pool.connect();
 		console.log(req.body);
-		var task_id = req.body.id;
-		var result = await client.query("DELETE FROM todo WHERE id = $1 ",[task_id]);
+		var id = req.body.task_id;
+		var result = await client.query("DELETE FROM todo WHERE id = $1 ",[id]);
 		if (!result) {
 			console.log('not delete success');
 			return res.send('No data found'); 
 		}else{ 
 			//result.rows.forEach(row=>{ console.log(row);});
+			console.log(result);
 			console.log('delete success'); 
 			return res.send(result.rows);
 		}
