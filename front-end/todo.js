@@ -14,8 +14,6 @@ $(document).ready(function(e) {
 			"Add task" : function () { 
 				var taskName = $('#task').val();
 				var user1 = $('#user1').val();
-				$('#task').val("");
-				$('#user1').val("");
 				if (taskName === "") { return false; }
 				count++;
 
@@ -33,6 +31,8 @@ $(document).ready(function(e) {
 						dataType: "json" 
 					})//.then(reload, ERROR_LOG);
 					reload();
+					$('#task').val("");
+					$('#user1').val("");
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
@@ -51,8 +51,6 @@ $(document).ready(function(e) {
 			"Confirm" : function(){
 				var name = $('#name').val();
 				var user = $('#user').val();
-				$('#name').val("");
-				$('#user').val("");
 				//alter($('#name').val());
 				if (name === "") { return false; }
 
@@ -72,7 +70,8 @@ $(document).ready(function(e) {
 				//var x = $select.find('.task').text();
 				// $select.find('.tasks').text(name+' ');
 				// $select.find('.users').text(user);
-
+				$('#name').val("");
+				$('#user').val("");
 				$(this).dialog('close');
 				
 
