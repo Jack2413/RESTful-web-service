@@ -28,11 +28,11 @@ $(document).ready(function(e) {
 							task_name : user1,
 							state : 'todo'
 
-					});//.then(reload, ERROR_LOG);
-
+						})//.then(reload, ERROR_LOG);
 						classontentType: "application/json",
 						dataType: "json" 
 					}).then(reload, ERROR_LOG);
+				
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
