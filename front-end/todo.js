@@ -23,7 +23,7 @@ $(document).ready(function(e) {
 						data: JSON.stringify({
 							task: taskName,
 							task_name: user1,
-							state: 'todo'
+							state: "todo"
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
