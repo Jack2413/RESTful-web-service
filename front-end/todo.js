@@ -16,7 +16,7 @@ $(document).ready(function(e) {
 				var user1 = $('#user1').val();
 				if (taskName === "") { return false; }
 				count++;
-				alter(taskName,user1);
+				alert(taskName,user1);
 				$.ajax({
 						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post', 
