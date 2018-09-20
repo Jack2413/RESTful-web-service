@@ -56,7 +56,7 @@ app.get('/get', async (req, res) => {
 			//});
 		}
 	//res.render('front-end/', {'tasks': result.rows});
-	//client.release();
+	client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
@@ -70,6 +70,8 @@ app.post('/post', async (req, res) => {
 		var task = req.body.task;
 		var name = req.body.taks_name;
 		var state = req.body.state;
+
+		console.log('ID: $1 Task: $2 Name: $3 state: $4',[id,task,name,state]);
 		var result = await client.query('INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)",[task,task_name,state]');
 		if (!result) {
 			console.log('not insert success');
@@ -80,7 +82,7 @@ app.post('/post', async (req, res) => {
 		});
 	}
 	//res.render('pages/db', {'data': result.rows});
-	//client.release();
+	client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
