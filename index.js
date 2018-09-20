@@ -66,9 +66,9 @@ app.get('/get', async (req, res) => {
 app.post('/post', async (req, res) => { 
 	try {
 		const client = await pool.connect();
-		var task = req.data.task;
-		var name = req.data.taks_name;
-		var state = req.data.state;
+		var task = req.body.task;
+		var name = req.body.taks_name;
+		var state = req.body.state;
 
 		console.log('Task: $2 Name: $3 state: $4',task,name,state);
 		var result = await client.query('INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)",[task,task_name,state]');

@@ -18,17 +18,17 @@ $(document).ready(function(e) {
 				count++;
 				alert(taskName,user1);
 				$.ajax({
-						method: 'POST',
-						url: 'https://nwen304project2.herokuapp.com/post', 
+						url: 'https://nwen304project2.herokuapp.com/post',
+						type: 'POST',
 						data: JSON.stringify({
 
 							task: taskName,
-							task_name : user1,
-							state : 'todo'
+							task_name: user1,
+							state: 'todo'
 
 						}),
-						classontentType: "application/json",
-						dataType: "json" 
+						// classontentType: "application/json",
+						// dataType: "json" 
 					})//.then(reload, ERROR_LOG);
 					reload();
 					$('#task').val("");
