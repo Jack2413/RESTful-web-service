@@ -70,7 +70,6 @@ app.post('/post', async (req, res) => {
 	try {
 		const client = await pool.connect();
 		console.log(req.body);
-		console.log(typeof(req.body));
 		var task = req.body.task;
 		var name = req.body.task_name;
 		var state = req.body.state;
@@ -99,12 +98,15 @@ app.delete('/delete', async (req, res) => {
 	try {
 
 		const client = await pool.connect();
-		var task = req.body.task;
-		var result = await client.query("DELETE FROM todo WHERE task = $1 ",[task] );
+		console.log(req.body);
+		var task_id = req.body.id;
+		var result = await client.query("DELETE FROM todo WHERE task = $1 ",[id]);
 		if (!result) {
+			console.log('not delete success');
 			return res.send('No data found'); 
 		}else{ 
 			//result.rows.forEach(row=>{ console.log(row);});
+			console.log('delete success'); 
 			return res.send(result.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});

@@ -41,33 +41,6 @@ $(document).ready(function(e) {
 		}
 	});
 
-	// $('#new-todo').dialog( {
- //          modal : true , autoOpen : false ,
- //          buttons : {
- //           "Add task" : function () { 
- //            var taskName = $('#task').val();
- //            var userName = $('#user').val();
- //            if (userName===""||taskName === "") { return false;}
-
- //            $.ajax({
- //                method:'POST',
- //                url: appAddress+'/addnew',
- //                data: JSON.stringify({
- //                    nametask: taskName,
- //                    username: userName,
- //                    ifcompleted: "N"
- //                }),
- //                contentType: "application/json",
- //                dataType: "json",
- //            });
- //            //displayHTML(taskName,userName,"N");
-
- //           $(this).dialog('close');
- //            },
- //            "Cancel" : function () { $(this).dialog('close'); }
- //        }
- //    });
-
 	$('#add-edit').button({
 		icons: { primary: "ui-icon-circle-plus" }}).click(
 		function() {
@@ -119,7 +92,7 @@ $(document).ready(function(e) {
 						method: 'DELETE',
 						url: 'https://nwen304project2.herokuapp.com/delete', 
 						data: JSON.stringify({
-							task: $select.find('.count').text() 
+							task_id: $select.find('.count').text() 
 						}),
 						contentType: "application/json",
 						dataType: "json",
