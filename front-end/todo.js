@@ -123,7 +123,7 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json",
-					}).then(reload, ERROR_LOG);
+					});//.then(reload, ERROR_LOG);
 
 				$select.effect('puff', function() { $(this).remove(); });
 				$(this).dialog('close');

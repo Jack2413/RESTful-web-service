@@ -104,9 +104,9 @@ app.delete('/delete', async (req, res) => {
 		if (!result) {
 			return res.send('No data found'); 
 		}else{ 
-			result.rows.forEach(row=>{ console.log(row);
-		});
-	}
+			//result.rows.forEach(row=>{ console.log(row);});
+			return res.send(result.rows);
+		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
 	} catch (err) { 
