@@ -82,9 +82,9 @@ app.post('/post', async (req, res) => {
 			return res.send('not insert success'); 
 		}else{
 			console.log('insert success'); 
-			return res.send(result.rows);
-		});
-	}
+			//result.rows.forEach(row=>{ console.log(row);});
+			return;
+		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
 	} catch (err) { 
