@@ -51,8 +51,8 @@ app.get('/get', async (req, res) => {
 			return res.send('No data found'); 
 		}else{ 
 			//return res.send(result.rows);
-			result.rows.forEach(row=>{ console.log(row);
 			return res.send(result.rows);
+			//result.rows.forEach(row=>{ console.log(row);
 			//});
 		}
 	//res.render('front-end/', {'tasks': result.rows});
@@ -74,7 +74,8 @@ app.post('/post', async (req, res) => {
 		if (!result) {
 			console.log('not insert success');
 			return res.send('not insert success'); 
-		}else{ 
+		}else{
+			console.log('insert success'); 
 			result.rows.forEach(row=>{ console.log(row);
 		});
 	}
