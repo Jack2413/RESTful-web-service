@@ -12,17 +12,20 @@ $(document).ready(function(e) {
 		modal : true , autoOpen : false ,
 		buttons : {
 			"Add task" : function () { 
+				
 				var taskName = $('#task').val();
 				var user1 = $('#user1').val();
+				$('#task').val('');
+				$('#user1').val('');
 				if (taskName === "") { return false; }
-				count++;
+				
 				console.log(taskName+' '+user1);
 
 				$.ajax({
-						method: 'POST',
-						url: 'https://nwen304project2.herokuapp.com/post',
+						method:'POST',
+						url:'https://nwen304project2.herokuapp.com/post',
 						data: JSON.stringify({
-							task: taskName, 
+							task: taskName,
 							task_name: user1, 
 							state: "todo"
 						}),
@@ -31,13 +34,39 @@ $(document).ready(function(e) {
 						
 					});//.then(reloadTasks, ERROR_LOG);
 
-					$('#task').val("");
-					$('#user1').val("");
+					
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
 		}
 	});
+
+	// $('#new-todo').dialog( {
+ //          modal : true , autoOpen : false ,
+ //          buttons : {
+ //           "Add task" : function () { 
+ //            var taskName = $('#task').val();
+ //            var userName = $('#user').val();
+ //            if (userName===""||taskName === "") { return false;}
+
+ //            $.ajax({
+ //                method:'POST',
+ //                url: appAddress+'/addnew',
+ //                data: JSON.stringify({
+ //                    nametask: taskName,
+ //                    username: userName,
+ //                    ifcompleted: "N"
+ //                }),
+ //                contentType: "application/json",
+ //                dataType: "json",
+ //            });
+ //            //displayHTML(taskName,userName,"N");
+
+ //           $(this).dialog('close');
+ //            },
+ //            "Cancel" : function () { $(this).dialog('close'); }
+ //        }
+ //    });
 
 	$('#add-edit').button({
 		icons: { primary: "ui-icon-circle-plus" }}).click(
