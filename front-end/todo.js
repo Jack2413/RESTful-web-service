@@ -16,21 +16,21 @@ $(document).ready(function(e) {
 				var user1 = $('#user1').val();
 				if (taskName === "") { return false; }
 				count++;
-				alert(taskName,user1);
+				console.log(taskName+' '+user1);
 				$.ajax({
+						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post',
-						type: 'POST',
 						data: JSON.stringify({
 
 							task: taskName,
 							task_name: user1,
 							state: 'todo'
 
-						}),
-						// classontentType: "application/json",
-						// dataType: "json" 
-					})//.then(reload, ERROR_LOG);
-					reload();
+						})
+						classontentType: "application/json",
+						dataType: "json" 
+					}).then(reloadTasks, ERROR_LOG);
+
 					$('#task').val("");
 					$('#user1').val("");
 					$(this).dialog('close');
