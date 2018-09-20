@@ -29,7 +29,7 @@ $(document).ready(function(e) {
 							task_name: user1, 
 							state: "todo"
 						}),
-						classontentType: "application/json",
+						contentType: "application/json",
 						dataType: "json",
 						
 					});//.then(reloadTasks, ERROR_LOG);
@@ -92,7 +92,7 @@ $(document).ready(function(e) {
 							new_taskName: name,
 							new_taskUser: user
 						}),
-						classontentType: "application/json",
+						contentType: "application/json",
 						dataType: "json",
 					}).then(reload, ERROR_LOG);
 
@@ -121,7 +121,7 @@ $(document).ready(function(e) {
 						data: JSON.stringify({
 							task: $select.find('.count').text() 
 						}),
-						classontentType: "application/json",
+						contentType: "application/json",
 						dataType: "json",
 					});//.then(reload, ERROR_LOG);
 
@@ -144,7 +144,7 @@ $(document).ready(function(e) {
 				count: $taskItem.find('.count').text(),
 				state: 'completed' 
 			}),
-			classontentType: "application/json",
+			contentType: "application/json",
 			dataType: "json",
 		}).then(reload, ERROR_LOG);
 

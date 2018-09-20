@@ -28,7 +28,7 @@ app.use (express.static(path.join(__dirname + '/front-end')));
 //invoke functions on a service hosted in a different location
 // Add headers
 app.use (bodyParser.json());
-//app.use (bodyParser.urlencoded({ extended: true }));
+app.use (bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
 // Website you wish to allow to connect res.setHeader('Access-Control-Allow-Origin', '*')
 res.setHeader('Access-Control-Allow-Origin', '*');
