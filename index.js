@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var router = express.Router();
+//var router = express.Router();
 var port = process.env.PORT || 8080;
 var bodyParser = require ('body-parser');
 //var DATABASE_URL = 'postgres://wewcmmzrcaubfs:13a35e258a45f4671a295a69570853853d2c4b364a8d66405a26bde1170b2fdf@ec2-54-83-4-76.compute-1.amazonaws.com:5432/d303lm4ceipfkg';
@@ -69,6 +69,7 @@ app.get('/get', async (req, res) => {
 app.post('/post', async (req, res) => { 
 	try {
 		const client = await pool.connect();
+		console.log(req.body);
 		var task = req.body.task;
 		var name = req.body.task_name;
 		var state = req.body.state;
