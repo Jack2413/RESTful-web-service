@@ -59,7 +59,7 @@ app.get('/get', async (req, res) => {
 			//});
 		}
 	//res.render('front-end/', {'tasks': result.rows});
-	client.release();
+	//client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
@@ -86,7 +86,7 @@ app.post('/post', async (req, res) => {
 		});
 	}
 	//res.render('pages/db', {'data': result.rows});
-	client.release();
+	//client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);

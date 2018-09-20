@@ -161,7 +161,7 @@ function reload () {
 function reloadTasks(tasks){
 	
 	tasks.forEach(task=>{
-		alert('ID: $1 Task: $2 Name: $3',task.id,task.task,task.name);
+		//alert('ID: $1 Task: $2 Name: $3',task.id,task.task,task.name);
 		var taskHTML =  '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
