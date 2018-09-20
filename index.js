@@ -72,7 +72,7 @@ app.post('/post', async (req, res) => {
 		var name = req.body.taks_name;
 		var state = req.body.state;
 
-		console.log('Task: $2 Name: $3 state: $4',task,name,state);
+		console.log('Task: $2 Name: $3 state: $4',[task,name,state]);
 		var result = await client.query('INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)',[task,task_name,state]);
 		if (!result) {
 			console.log('not insert success');
