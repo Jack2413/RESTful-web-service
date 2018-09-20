@@ -159,8 +159,9 @@ function reload () {
 }
 
 function reloadTasks(tasks){
-		//alert(tasks);
+	
 	tasks.forEach(task=>{
+		alert(task.id,'ID: $1 Task: $2 Name: $3',task.id,task.task,task.name);
 		var taskHTML =  '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
@@ -176,7 +177,7 @@ function reloadTasks(tasks){
 			$newTask.hide();
 			
 		if (task.state == 'todo') {
-			alert("in if statement");
+			
 			$('#todo-list').prepend($newTask);
 		}else{
 			$('#completed-list').prepend($newTask);
