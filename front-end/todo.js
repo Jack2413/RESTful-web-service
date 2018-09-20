@@ -27,7 +27,7 @@ $(document).ready(function(e) {
 							state: "todo"
 						}),
 						classontentType: "application/json",
-						dataType: "json" 
+						dataType: "json",
 						
 					});//.then(reloadTasks, ERROR_LOG);
 
@@ -93,7 +93,7 @@ $(document).ready(function(e) {
 							task: $select.find('.count').text() 
 						}),
 						classontentType: "application/json",
-						dataType: "json" 
+						dataType: "json",
 					}).then(reload, ERROR_LOG);
 
 				$select.effect('puff', function() { $(this).remove(); });
@@ -116,7 +116,7 @@ $(document).ready(function(e) {
 				state: 'completed' 
 			}),
 			classontentType: "application/json",
-			dataType: "json" 
+			dataType: "json",
 		}).then(reload, ERROR_LOG);
 
 		$taskItem.slideUp(250, function() {
