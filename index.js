@@ -100,7 +100,7 @@ app.delete('/delete', async (req, res) => {
 		const client = await pool.connect();
 		console.log(req.body);
 		var task_id = req.body.id;
-		var result = await client.query("DELETE FROM todo WHERE task = $1 ",[id]);
+		var result = await client.query("DELETE FROM todo WHERE id = $1 ",[task_id]);
 		if (!result) {
 			console.log('not delete success');
 			return res.send('No data found'); 
