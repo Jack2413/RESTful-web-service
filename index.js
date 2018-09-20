@@ -3,7 +3,7 @@ var app = express();
 //var router = express.Router();
 var port = process.env.PORT || 8080;
 var bodyParser = require ('body-parser');
-//var DATABASE_URL = 'postgres://wewcmmzrcaubfs:13a35e258a45f4671a295a69570853853d2c4b364a8d66405a26bde1170b2fdf@ec2-54-83-4-76.compute-1.amazonaws.com:5432/d303lm4ceipfkg';
+var DATABASE_URL = 'postgres://wewcmmzrcaubfs:13a35e258a45f4671a295a69570853853d2c4b364a8d66405a26bde1170b2fdf@ec2-54-83-4-76.compute-1.amazonaws.com:5432/d303lm4ceipfkg';
 const path = require('path');
 const { Pool } = require('pg'); 
 const pool = new Pool({
@@ -28,7 +28,7 @@ app.use (express.static(path.join(__dirname + '/front-end')));
 //invoke functions on a service hosted in a different location
 // Add headers
 app.use (bodyParser.json());
-app.use (bodyParser.urlencoded({ extended: true }));
+//app.use (bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
 // Website you wish to allow to connect res.setHeader('Access-Control-Allow-Origin', '*')
 res.setHeader('Access-Control-Allow-Origin', '*');
