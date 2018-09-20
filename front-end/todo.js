@@ -22,11 +22,7 @@ $(document).ready(function(e) {
 				$.ajax({
 						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post',
-						data: JSON.stringify(
-							task: taskName,
-							task_name: user1,
-							state: "todo"
-						),
+						data: JSON.stringify(list),
 						classontentType: "application/json",
 						dataType: "json" 
 					}).then(reloadTasks, ERROR_LOG);
