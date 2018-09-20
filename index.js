@@ -133,25 +133,25 @@ app.put('/update', async (req, res) => {
 app.get('/', (req, res) => res.render('pages/index'))
 	.listen(port, () => console.log('Listening on Heroku Server'))
 
-// app.put('/put', async (req, res) => { 
-// 	try {
-// 		const client = await pool.connect()
-// 		var task = req.body.new_taskName;
-// 		var id = req.body.previous_index;
-// 		var name = req.body.new_taskUser;
-// 		var result = await client.query("UPDATE test_table SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id] );
-// 		if (!result) {
-// 			return res.send('No data found'); 
-// 		}else{ 
-// 			result.rows.forEach(row=>{ console.log(row);
-// 		});
-// 	}
-// 	res.render('pages/db', {'data': result.rows});
-// 	client.release();
-// 	} catch (err) { 
-// 		console.error(err); 
-// 		res.send("Error " + err);
-// 	} 
-// });
+app.put('/put', async (req, res) => { 
+	try {
+		const client = await pool.connect()
+		var task = req.body.new_taskName;
+		var id = req.body.previous_index;
+		var name = req.body.new_taskUser;
+		var result = await client.query("UPDATE test_table SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id] );
+		if (!result) {
+			return res.send('No data found'); 
+		}else{ 
+			result.rows.forEach(row=>{ console.log(row);
+		});
+	}
+	res.render('pages/db', {'data': result.rows});
+	client.release();
+	} catch (err) { 
+		console.error(err); 
+		res.send("Error " + err);
+	} 
+});
 
 

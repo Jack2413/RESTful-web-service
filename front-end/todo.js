@@ -31,8 +31,8 @@ $(document).ready(function(e) {
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
-					}).then(reload, ERROR_LOG);
-
+					})//.then(reload, ERROR_LOG);
+					reload();
 					$(this).dialog('close');
 			},
 			"Cancel" : function () { $(this).dialog('close'); }
@@ -70,8 +70,8 @@ $(document).ready(function(e) {
 					}).then(reload, ERROR_LOG);
 
 				//var x = $select.find('.task').text();
-				$select.find('.tasks').text(name+' ');
-				$select.find('.users').text(user);
+				// $select.find('.tasks').text(name+' ');
+				// $select.find('.users').text(user);
 
 				$(this).dialog('close');
 				
@@ -91,7 +91,7 @@ $(document).ready(function(e) {
 						method: 'DELETE',
 						url: 'https://nwen304project2.herokuapp.com/delete', 
 						data: JSON.stringify({
-							task: $select.find('.task').text() 
+							task: $select.find('.count').text() 
 						}),
 						classontentType: "application/json",
 						dataType: "json" 
@@ -113,7 +113,7 @@ $(document).ready(function(e) {
 			method: 'PUT',
 			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
-				task: $taskItem.find('.task').text(),
+				count: $taskItem.find('.count').text(),
 				state: 'completed' 
 			}),
 			classontentType: "application/json",
@@ -178,7 +178,6 @@ function reloadTasks(tasks){
 			$newTask.hide();
 			
 		if (task.state == 'todo') {
-			
 			$('#todo-list').prepend($newTask);
 		}else{
 			$('#completed-list').prepend($newTask);
