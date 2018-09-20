@@ -70,10 +70,7 @@ app.post('/post', async (req, res) => {
 	try {
 		const client = await pool.connect();
 		console.log(req.body);
-		console.log(req.body.task);
-		console.log(req.param('task'));
-		console.log(req.params.task);
-		console.log(req.task);
+		console.log(typeof（req.body));
 		var task = req.body.task;
 		var name = req.body.task_name;
 		var state = req.body.state;
