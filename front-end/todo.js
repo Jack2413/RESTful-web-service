@@ -159,10 +159,8 @@ function reload () {
 }
 
 function reloadTasks(tasks){
-	alert(tasks[0].state);
-	var i = 0;
 		//alert(tasks);
-	for (i; i<tasks.length; i++) {
+	tasks.forEach(task=>{
 		var taskHTML =  '<li><span class="done">%</span>';
 			taskHTML += '<span class="edit">+</span>';
 			taskHTML += '<span class="delete">x</span>';
@@ -172,18 +170,19 @@ function reloadTasks(tasks){
 
 		var $newTask = $(taskHTML);
 
-			$newTask.find('.count').text(tasks[i].id+' ');
-			$newTask.find('.tasks').text(tasks[i].task+' ');
-			$newTask.find('.users').text(tasks[i].name);
+			$newTask.find('.count').text(task.id+' ');
+			$newTask.find('.tasks').text(task.task+' ');
+			$newTask.find('.users').text(task.name);
 			$newTask.hide();
 			
-		if (tasks[i].state == 'todo') {
+		if (task.state == 'todo') {
 			alert("in if statement");
 			$('#todo-list').prepend($newTask);
 		}else{
 			$('#completed-list').prepend($newTask);
 		}
-	}
+		$newTask.show('clip',250).effect('highlight',1000);
+	});
 }
 
  // end ready
