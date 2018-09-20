@@ -64,7 +64,7 @@ $(document).ready(function(e) {
 							new_taskUser: user
 						}),
 						classontentType: "application/json",
-						dataType: "json" 
+						dataType: "json",
 					}).then(reload, ERROR_LOG);
 
 				//var x = $select.find('.task').text();
