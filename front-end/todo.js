@@ -112,7 +112,7 @@ $(document).ready(function(e) {
 			method: 'PUT',
 			url: 'https://nwen304project2.herokuapp.com/put', 
 			data: JSON.stringify({
-				task: $select.find('.task').test(),
+				task: $select.find('.task').text(),
 				state: 'completed' 
 			}),
 			classontentType: "application/json",
