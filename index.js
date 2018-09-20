@@ -83,7 +83,7 @@ app.post('/post', async (req, res) => {
 		}else{
 			console.log('insert success'); 
 			//result.rows.forEach(row=>{ console.log(row);});
-			return;
+			return res.send(result.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
