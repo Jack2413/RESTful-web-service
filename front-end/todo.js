@@ -17,14 +17,21 @@ $(document).ready(function(e) {
 				if (taskName === "") { return false; }
 				count++;
 				console.log(taskName+' '+user1);
-				var list = {task: taskName, task_name: user1, state: "todo"}
+				console.log(list);
 				console.log(typeof(list));
 				$.ajax({
 						method: 'POST',
 						url: 'https://nwen304project2.herokuapp.com/post',
-						data: JSON.stringify(list),
+						data: JSON.stringify({
+
+							task: taskName, 
+							task_name: user1, 
+							state: "todo"
+
+						}),
 						classontentType: "application/json",
 						dataType: "json" 
+						
 					}).then(reloadTasks, ERROR_LOG);
 
 					$('#task').val("");
