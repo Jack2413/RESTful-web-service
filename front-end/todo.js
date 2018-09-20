@@ -29,7 +29,7 @@ $(document).ready(function(e) {
 						classontentType: "application/json",
 						dataType: "json" 
 						
-					}).then(reloadTasks, ERROR_LOG);
+					});//.then(reloadTasks, ERROR_LOG);
 
 					$('#task').val("");
 					$('#user1').val("");
