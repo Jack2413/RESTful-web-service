@@ -1,7 +1,7 @@
+var $select;
+var count = 0;
+var ERROR_LOG = console.error.bind(console);
 $(document).ready(function(e) {
-	var $select;
-	var count = 0;
-	var ERROR_LOG = console.error.bind(console);
 	reload();
 	$('#add-todo').button({
 		icons: { primary: "ui-icon-circle-plus" }}).click(

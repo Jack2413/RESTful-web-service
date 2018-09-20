@@ -51,7 +51,7 @@ app.get('/get', async (req, res) => {
 			return res.send('No data found'); 
 		}else{ 
 			//return res.send(result.rows);
-			return res.json(result.rows);
+			return res.send(result.rows);
 			//result.rows.forEach(row=>{ console.log(row);
 			//});
 		}
