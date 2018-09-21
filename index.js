@@ -76,10 +76,12 @@ app.post('/post', async (req, res) => {
 		console.log(task+' '+name+' '+state);
 		//console.log('Task: $2 Name: $3 state: $4',[task,name,state]);
 		var result = await client.query('INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)',[task,name,state]);
+
 		if (!result) {
 			console.log('not insert success');
 			return res.send('not insert success'); 
 		}else{
+			result = await client.query('SELECT * FROM todo where id = (SELECT MAX(id) FROM todo)');
 			console.log('insert success'); 
 			//result.rows.forEach(row=>{ console.log(row);});
 			return res.send(result.rows);
@@ -103,13 +105,11 @@ app.delete('/delete', async (req, res) => {
 		if (!result) {
 			console.log('not delete success');
 			return res.send('No data found'); 
-		}else{ 
-			result.rows.forEach(row=>{ console.log(row);});
+		}else{ 			
 			console.log('delete success'); 
-			//return res.send(result.rows);
+			return res.send('delete success');
 		}
-	//res.render('pages/db', {'data': result.rows});
-	//client.release();
+
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);

@@ -32,7 +32,7 @@ $(document).ready(function(e) {
 						contentType: "application/json",
 						dataType: "json",
 						
-					});//.then(reloadTasks, ERROR_LOG);
+					}).then(reloadTasks, ERROR_LOG);
 
 					
 					$(this).dialog('close');
@@ -96,7 +96,7 @@ $(document).ready(function(e) {
 						}),
 						contentType: "application/json",
 						dataType: "json",
-					});//.then(reload, ERROR_LOG);
+					});
 
 				$select.effect('puff', function() { $(this).remove(); });
 				$(this).dialog('close');
