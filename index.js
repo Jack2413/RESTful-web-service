@@ -134,7 +134,7 @@ app.put('/update', async (req, res) => {
 			return res.send('not update success'); 
 		}else{
 			console.log('update success');  
-			return res.send(result.rows);
+			return res.send('');
 		}
 	//res.render('pages/db', {'data': result.rows});
 		client.release();
@@ -161,7 +161,7 @@ app.put('/put', async (req, res) => {
 		}else{
 			console.log('update success'); 
 			console.log('select success'); 
-			return res.send(result.rows);
+			return res.send('');
 		}
 	//res.render('pages/db', {'data': result.rows});
 		client.release();
