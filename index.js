@@ -48,6 +48,7 @@ next();
 
 app.get('/get', async (req, res) => { 
 	try {
+		console.log("get in get function");
 		const client = await pool.connect();
 		var result = await client.query('SELECT * FROM todo');
 		if (!result) {
