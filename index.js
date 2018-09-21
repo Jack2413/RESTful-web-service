@@ -125,9 +125,10 @@ app.put('/update', async (req, res) => {
 		const client = await pool.connect();
 		console.log(req.body);
 		var task = req.body.new_taskName;
-		var id = req.body.previous_index;
 		var name = req.body.new_taskUser;
-		var result = await client.query("UPDATE todo SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id]);
+		var id = req.body.previous_index;
+		
+		var result = await client.query("UPDATE todo SET TASK = $1 ,NAME = $2 WHERE ID = $3",[task,name,id]);
 		if (!result) {
 			console.log('not update success');
 			return res.send('not update success'); 
@@ -152,7 +153,7 @@ app.put('/put', async (req, res) => {
 		console.log(req.body);
 		var id = req.body.count;
 		var state = req.body.state;
-		var result = await client.query("UPDATE todo SET state =$2 WHERE ID = $1",[id,state]);
+		var result = await client.query("UPDATE todo SET state = $2 WHERE ID = $1",[id,state]);
 
 		if (!result) {
 			console.log('not update success');
