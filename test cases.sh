@@ -1,5 +1,5 @@
+#!/bin/sh
 # test cases
-
 #test the GET method of the database
 echo 'Getting task(s) from database'
 curl -H "Content-Type: application/json" -X GET https://nwen304project2.herokuapp.com/get
