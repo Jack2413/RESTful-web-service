@@ -60,7 +60,7 @@ app.get('/get', async (req, res) => {
 			//});
 		}
 	//res.render('front-end/', {'tasks': result.rows});
-	//client.release();
+		client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
@@ -91,7 +91,7 @@ app.post('/post', async (req, res) => {
 			return res.send(result2.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});
-	//client.release();
+		client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
@@ -137,7 +137,7 @@ app.put('/update', async (req, res) => {
 			return res.send(result.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});
-	//client.release();
+		client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
@@ -164,7 +164,7 @@ app.put('/put', async (req, res) => {
 			return res.send(result.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});
-	//client.release();
+		client.release();
 	} catch (err) { 
 		console.error(err); 
 		res.send("Error " + err);
