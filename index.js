@@ -76,15 +76,18 @@ app.post('/post', async (req, res) => {
 		console.log(task+' '+name+' '+state);
 		//console.log('Task: $2 Name: $3 state: $4',[task,name,state]);
 		var result = await client.query('INSERT INTO todo (TASK,NAME,STATE) VALUES ($1,$2,$3)',[task,name,state]);
-
+		var result2 = await client.query('SELECT * FROM todo where id = (SELECT MAX(id) FROM todo)');
 		if (!result) {
 			console.log('not insert success');
 			return res.send('not insert success'); 
-		}else{
-			result = await client.query('SELECT * FROM todo where id = (SELECT MAX(id) FROM todo)');
+		}else if(!result2){
 			console.log('insert success'); 
-			//result.rows.forEach(row=>{ console.log(row);});
-			return res.send(result.rows);
+			console.log('select fail'); 
+			return res.send('insert success, select fail'); 
+		}else{
+			console.log('insert success'); 
+			console.log('select success'); 
+			return res.send(result2.rows);
 		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
@@ -118,17 +121,19 @@ app.delete('/delete', async (req, res) => {
 
 app.put('/update', async (req, res) => { 
 	try {
-		const client = await pool.connect()
+		const client = await pool.connect();
+		console.log(req.body);
 		var task = req.body.new_taskName;
 		var id = req.body.previous_index;
 		var name = req.body.new_taskUser;
-		var result = await client.query("UPDATE test_table SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id] );
+		var result = await client.query("UPDATE todo SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id]);
 		if (!result) {
-			return res.send('No data found'); 
-		}else{ 
-			result.rows.forEach(row=>{ console.log(row);
-		});
-	}
+			console.log('not update success');
+			return res.send('not update success'); 
+		}else{
+			console.log('update success');  
+			return res.send(result2.rows);
+		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
 	} catch (err) { 
@@ -142,17 +147,20 @@ app.get('/', (req, res) => res.render('pages/index'))
 
 app.put('/put', async (req, res) => { 
 	try {
-		const client = await pool.connect()
-		var task = req.body.new_taskName;
-		var id = req.body.previous_index;
-		var name = req.body.new_taskUser;
-		var result = await client.query("UPDATE test_table SET TASK = '$1' ,NAME = '$2' WHERE ID = $3",[task,name,id] );
+		const client = await pool.connect();
+		console.log(req.body);
+		var id = req.body.count;
+		var state = req.body.state;
+		var result = await client.query("UPDATE todo SET state =$2 WHERE ID = $1",[id,state]);
+
 		if (!result) {
-			return res.send('No data found'); 
-		}else{ 
-			result.rows.forEach(row=>{ console.log(row);
-		});
-	}
+			console.log('not update success');
+			return res.send('not update success'); 
+		}else{
+			console.log('update success'); 
+			console.log('select success'); 
+			return res.send(result2.rows);
+		}
 	//res.render('pages/db', {'data': result.rows});
 	//client.release();
 	} catch (err) { 

@@ -58,7 +58,7 @@ $(document).ready(function(e) {
 
 				$.ajax({
 						method: 'PUT',
-						url: 'https://nwen304project2.herokuapp.com/put', 
+						url: 'https://nwen304project2.herokuapp.com/update', 
 						data: JSON.stringify({
 
 							previous_index: $select.find('.count').text(),
@@ -67,11 +67,11 @@ $(document).ready(function(e) {
 						}),
 						contentType: "application/json",
 						dataType: "json",
-					}).then(reload, ERROR_LOG);
+					});
 
-				//var x = $select.find('.task').text();
-				// $select.find('.tasks').text(name+' ');
-				// $select.find('.users').text(user);
+				var x = $select.find('.task').text();
+				$select.find('.tasks').text(name+' ');
+				$select.find('.users').text(user);
 				$('#name').val("");
 				$('#user').val("");
 				$(this).dialog('close');
@@ -119,13 +119,13 @@ $(document).ready(function(e) {
 			}),
 			contentType: "application/json",
 			dataType: "json",
-		}).then(reload, ERROR_LOG);
+		});
 
 		$taskItem.slideUp(250, function() {
 			var $this = $(this);
 			$this.detach();
 
-			$('#completed-list').prepend($this);
+		$('#completed-list').prepend($this);
 			$this.slideDown();
 		});
 	});
